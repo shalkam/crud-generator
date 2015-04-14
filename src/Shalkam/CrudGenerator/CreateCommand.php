@@ -57,21 +57,24 @@ class CreateCommand extends Command {
             'table' => $table,
             'fields' => $fields,
         ]);
-        $this->info("\nModel : {$modelGen} Created.");
+        $this->info("\nModel Created:");
+        $this->comment($modelGen);
         $controllerGen = Generator::get('controller')->make([
             'name' => $model,
             'namespace' => 'App\Http\Controllers',
             'modelsLower' => $modelsLower,
         ]);
-        $this->info("\nController : {$controllerGen} Created.");
-        $this->info("\nRoute : {$modelsLower} Added.");
+        $this->info("\nController Created:");
+        $this->comment($controllerGen);
+        $this->info("\nRoute Added:");
+        $this->comment($modelsLower);
         $viewGen = Generator::get('view')->make([
             'name' => $model,
             'modelsLower' => $modelsLower,
             'models' => $models,
         ]);
-        $this->info("\nView : {$modelsLower} Created.");
-
+        $this->info("\nView Created :");
+        $this->comment($modelsLower);
         $migrationGen = Generator::get('migration')->make([
             'models' => $models,
             'table' => $table,
