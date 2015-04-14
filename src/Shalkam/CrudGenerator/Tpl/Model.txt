@@ -1,0 +1,22 @@
+<?php namespace $NAMESPACE$;
+
+use Illuminate\Database\Eloquent\Model;
+
+class $MODEL_NAME$ extends BaseModel
+{
+
+	public $table = "$TABLE_NAME$";
+
+	public $primaryKey = "id";
+
+	public $timestamps = true;
+
+	public $fillable = [
+	    $FIELDS$
+	];
+
+	public static $rules = [
+	    $RULES$
+	];
+
+}

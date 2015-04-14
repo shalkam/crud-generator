@@ -1,0 +1,17 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Mitul\Base\BaseForm;
+
+class $MODEL_NAME$ extends BaseForm {
+
+    public function buildForm() {
+        parent::buildForm();
+        // Modify fields here
+        $this
+            $FIELDS$
+            ->add('Save', 'submit', ['attr'=> ['class' => 'btn btn-primary']]);
+    }
+
+}

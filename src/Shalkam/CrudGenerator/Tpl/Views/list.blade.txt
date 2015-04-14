@@ -1,0 +1,11 @@
+@extends('app')
+@section('title')
+$MODEL_NAME_PLURAL$ List
+@endsection
+@section('content')
+<ul>
+@foreach ($entries as $entry)
+<li><a href="{{ $entry->id }}">{{ $entry->name }}</a></li>
+@endforeach
+</ul>
+@endsection

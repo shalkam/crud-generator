@@ -1,0 +1,20 @@
+{
+    "name": "shalkam/crud-generator",
+    "description": "",
+    "authors": [
+        {
+            "name": "shalkam",
+            "email": "info@thecodingdoctor.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "5.0.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Shalkam\\CrudGenerator": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

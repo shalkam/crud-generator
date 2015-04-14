@@ -1,0 +1,4 @@
+Route::get(strtolower('$MODEL_NAME_PLURAL_CAMEL$').'/{id}/delete', [
+    'as' => strtolower('$MODEL_NAME_PLURAL_CAMEL$').'.delete',
+    'uses' => '$MODEL_NAME$Controller@destroy',
+]);

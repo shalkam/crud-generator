@@ -1,0 +1,14 @@
+@extends('app')
+
+@section('title')
+@if(isset($form->getModel()->name))
+Edit {{$form->getModel()->name}} Data
+@else
+Create New $MODEL_NAME$
+@endif
+@endsection
+
+@section('content')
+{!! form($form) !!}
+@endsection
+
