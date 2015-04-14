@@ -1,6 +1,6 @@
 {
     "name": "shalkam/crud-generator",
-    "description": "",
+    "description": "Creates CRUD in MVC pattern",
     "authors": [
         {
             "name": "shalkam",
