@@ -2,7 +2,7 @@
 
 namespace $NAMESPACE$;
 
-use Mitul\Base\BaseForm;
+use Shalkam\CrudGenerator\Base\BaseForm;
 
 class $MODEL_NAME$ extends BaseForm {
 
