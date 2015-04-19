@@ -1,6 +1,6 @@
 <?php namespace $NAMESPACE$;
 
-use Illuminate\Database\Eloquent\Model;
+use Shalkam\CrudGenerator\Base\BaseModel;
 
 class $MODEL_NAME$ extends BaseModel
 {
