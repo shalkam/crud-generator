@@ -36,8 +36,8 @@
     </head>
     <body class="skin-blue">
         <div class="wrapper">
-            @include('includes.header')
-            @include('includes.sidebar')
+            @include('crud::includes.header')
+            @include('crud::includes.sidebar')
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
