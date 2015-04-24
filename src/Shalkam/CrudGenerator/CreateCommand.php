@@ -68,13 +68,13 @@ class CreateCommand extends Command {
         $this->comment($controllerGen);
         $this->info("\nRoute Added:");
         $this->comment($modelsLower);
-        $viewGen = Generator::get('view')->make([
-            'name' => $model,
-            'modelsLower' => $modelsLower,
-            'models' => $models,
-        ]);
-        $this->info("\nView Created :");
-        $this->comment($modelsLower);
+//        $viewGen = Generator::get('view')->make([
+//            'name' => $model,
+//            'modelsLower' => $modelsLower,
+//            'models' => $models,
+//        ]);
+//        $this->info("\nView Created :");
+//        $this->comment($modelsLower);
         $migrationGen = Generator::get('migration')->make([
             'models' => $models,
             'table' => $table,
@@ -150,13 +150,17 @@ class CreateCommand extends Command {
                 $fieldOptions[] = $fieldInputs[2];
 
             $validations = $this->ask("Enter validations: ");
-
+            $sortable = false;
+            if ($this->confirm('In list View? [yes|no]')) {
+                $sortable = true;
+            }
             $field = [
                 'fieldName' => $fieldName,
                 'fieldType' => $fieldType,
                 'fieldTypeParams' => $fieldTypeParams,
                 'fieldOptions' => $fieldOptions,
-                'validations' => $validations
+                'validations' => $validations,
+                'sortable' => $sortable
             ];
 
             $fields[] = $field;

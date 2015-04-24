@@ -4,10 +4,11 @@ namespace Shalkam\CrudGenerator\Base;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Shalkam\CrudGenerator\Base\Menu;
 
 class BaseController extends Controller {
 
-    public $params = ['form_data' =>''];
+    public $params = ['form_data' => ''];
 
     /**
      * Display a listing of the resource.
@@ -16,8 +17,14 @@ class BaseController extends Controller {
      */
     public function index() {
         $class = $this->params['model'];
-        $entries = $class::all();
-        return view("{$this->params['tpl_path']}.list", compact('entries'));
+        $entries = $class::Sortable()->paginate(10);
+        $tplPath = base_path('resources/views/' . $this->params['tpl_path']);
+        if (is_dir($tplPath)) {
+            $view = "{$this->params['tpl_path']}.list";
+        } else {
+            $view = 'crud::entry.list';
+        }
+        return view($view, compact('entries'));
     }
 
     /**
@@ -30,7 +37,13 @@ class BaseController extends Controller {
         $class = $this->params['model'];
         $entry = $class::find($id);
         $params = $this->params;
-        return view("{$this->params['tpl_path']}.details", compact('entry', 'params'));
+        $tplPath = base_path('resources/views/' . $this->params['tpl_path']);
+        if (is_dir($tplPath)) {
+            $view = "{$this->params['tpl_path']}.details";
+        } else {
+            $view = 'crud::entry.details';
+        }
+        return view($view, compact('entry', 'params'));
     }
 
     /**
@@ -47,7 +60,13 @@ class BaseController extends Controller {
                     'url' => route("{$this->params['route']}.store"),
                     'data' => $this->params['form_data']
         ]);
-        return view("{$this->params['tpl_path']}.edit", compact('form'));
+        $tplPath = base_path('resources/views/' . $this->params['tpl_path']);
+        if (is_dir($tplPath)) {
+            $view = "{$this->params['tpl_path']}.edit";
+        } else {
+            $view = 'crud::entry.edit';
+        }
+        return view($view, compact('form'));
     }
 
     /**
@@ -76,7 +95,13 @@ class BaseController extends Controller {
                     'url' => route("{$this->params['route']}.update", [$id]),
                     'data' => $this->params['form_data']
         ]);
-        return view("{$this->params['tpl_path']}.edit", compact('form'));
+        $tplPath = base_path('resources/views/' . $this->params['tpl_path']);
+        if (is_dir($tplPath)) {
+            $view = "{$this->params['tpl_path']}.edit";
+        } else {
+            $view = 'crud::entry.edit';
+        }
+        return view($view, compact('form'));
     }
 
     /**

@@ -1,9 +1,11 @@
 <?php namespace $NAMESPACE$;
 
 use Shalkam\CrudGenerator\Base\BaseModel;
+use Kyslik\ColumnSortable\Sortable;
 
 class $MODEL_NAME$ extends BaseModel
 {
+        use Sortable;
 
 	public $table = "$TABLE_NAME$";
 
@@ -11,6 +13,9 @@ class $MODEL_NAME$ extends BaseModel
 
 	public $timestamps = true;
 
+        public $sortable = [
+            $SORTABLE$
+        ];
 	public $fillable = [
 	    $FIELDS$
 	];

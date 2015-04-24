@@ -16,7 +16,7 @@ class ModelGenerator {
             mkdir(app_path() . '/Models/', 0777, true);
         }
         file_put_contents(app_path() . '/Models/' . $params['name'] . '.php', $file);
-        
+
         return $params['name'] . '.php';
     }
 
@@ -27,25 +27,32 @@ class ModelGenerator {
         $file = str_replace('$TABLE_NAME$', $params['table'], $file);
         $file = str_replace('$FIELDS$', implode(",\n\t\t", $fields['fillable']), $file);
         $file = str_replace('$RULES$', implode(",\n\t\t", $fields['rules']), $file);
+        $file = str_replace('$SORTABLE$', implode(",\n\t\t", $fields['sortable']), $file);
         return $file;
     }
 
     private function parseFields($fields) {
         $rules = [];
-
         foreach ($fields as $field) {
             if (!empty($field['validations'])) {
                 $rule = '"' . $field['fieldName'] . '" => "' . $field['validations'] . '"';
                 $rules[] = $rule;
             }
         }
+        
         $fillable = [];
-
         foreach ($fields as $field) {
             $fillable[] = '"' . $field['fieldName'] . '"';
         }
 
-        return ['fillable' => $fillable, 'rules' => $rules];
+        $sortable = [];
+        foreach ($fields as $field) {
+            if ($field['sortable']) {
+                $sortable[] = '"' . $field['fieldName'] . '"';
+            }
+        }
+
+        return ['fillable' => $fillable, 'rules' => $rules, 'sortable' => $sortable];
     }
 
 }

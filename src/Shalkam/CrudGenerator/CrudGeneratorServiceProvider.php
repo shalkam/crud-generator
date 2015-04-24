@@ -24,6 +24,7 @@ class CrudGeneratorServiceProvider extends ServiceProvider {
             return new CreateCommand();
         });
         $this->commands(['make:crud']);
+        $this->loadViewsFrom(__DIR__ . '/views', 'crud');
     }
 
     /**
