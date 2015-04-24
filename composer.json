@@ -9,7 +9,9 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "kris/laravel-form-builder": "~1.4"
+        "kris/laravel-form-builder": "~1.4",
+        "vespakoen/menu": "3.*",
+        "kyslik/column-sortable": "~1.0.0"
     },
     "autoload": {
         "psr-0": {
