@@ -7,10 +7,18 @@ Using composer:
 composer require "shalkam/crud-generator":"dev-master"
 ```
 
-Add Service provider to `config/app.php`
+Add Service providers to `config/app.php`
 ``` php
 'Shalkam\CrudGenerator\CrudGeneratorServiceProvider'
+//For column sortable package 
+'Kyslik\ColumnSortable\ColumnSortableServiceProvider',
+//For Menu package
+'Menu\MenuServiceProvider',
 ```
+
+Add The Menu Facade to `config/app.php`
+``` php
+'Menu' => 'Menu\Menu',
 
 #Basic Usage
 Simply Use this artisan command
