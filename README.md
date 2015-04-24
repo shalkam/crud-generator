@@ -9,16 +9,30 @@ composer require "shalkam/crud-generator":"dev-master"
 
 Add Service providers to `config/app.php`
 ``` php
-'Shalkam\CrudGenerator\CrudGeneratorServiceProvider'
-//For column sortable package 
-'Kyslik\ColumnSortable\ColumnSortableServiceProvider',
-//For Menu package
-'Menu\MenuServiceProvider',
+'providers' => [
+    // ....
+    'Shalkam\CrudGenerator\CrudGeneratorServiceProvider'
+    //For the form-builder package
+    'Kris\LaravelFormBuilder\FormBuilderServiceProvider'
+    //For column sortable package 
+    'Kyslik\ColumnSortable\ColumnSortableServiceProvider',
+    //For Menu package
+    'Menu\MenuServiceProvider',
+]
 ```
 
 Add The Menu Facade to `config/app.php`
 ``` php
-'Menu' => 'Menu\Menu',
+'aliases' => [
+    //...
+    'Menu' => 'Menu\Menu',
+    'FormBuilder' => 'Kris\LaravelFormBuilder\Facades\FormBuilder',
+]
+```
+
+Then run this command
+``` sh
+php artisan vendor:publish
 ```
 
 #Basic Usage
