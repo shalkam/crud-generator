@@ -1,4 +1,4 @@
-@extends('app')
+@extends('crud::app')
 @section('title')
 @endsection
 @section('content')

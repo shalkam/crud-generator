@@ -1,4 +1,4 @@
-@extends('app')
+@extends('crud::app')
 
 @section('content')
 <div class="box box-info">
