@@ -1,5 +1,5 @@
 # CrudGenerator
-Creates CRUD in MVC pattern for Laravel
+Creates CRUD in MVC pattern for Laravel 5
 
 #Installation
 Using composer:
@@ -19,6 +19,7 @@ Add Service providers to `config/app.php`
 Add The Menu Facade to `config/app.php`
 ``` php
 'Menu' => 'Menu\Menu',
+```
 
 #Basic Usage
 Simply Use this artisan command
