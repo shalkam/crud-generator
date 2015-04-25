@@ -5,12 +5,14 @@
 Examples List
 
 <table class="table table-striped table-hover table-responsive">
+    @if(!$entries->isEmpty())
     <tr>
         @foreach ($entries->first()->sortable as $attr)
         <th>@sortablelink($attr)</th>
         @endforeach
         <td></td>
     </tr>
+    @endif
     @foreach ($entries as $entry)
     <tr>
         @foreach ($entry->sortable as $attr)

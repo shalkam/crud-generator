@@ -6,7 +6,7 @@
         <h3 class="box-title">@if(isset($form->getModel()->name))
             Edit {{$form->getModel()->name}} Data
             @else
-            Create New Example
+            Create New {{ class_basename($form->getModel()) }}
             @endif</h3>
     </div><!-- /.box-header -->
     <div class="box-body pad">

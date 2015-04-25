@@ -44,4 +44,19 @@ class CrudMenu {
         return $menu->render();
     }
 
+    public static function breadcrumbs() {
+        $menu = Menu::handler('main')
+                ->addClass('sidebar-menu');
+        foreach (self::getMenuItems() as $route => $menuItems) {
+            $items = Menu::items();
+            foreach ($menuItems as $itemRoute => $itemName) {
+                $items->add($itemRoute, '<span>' . $itemName . '</span>');
+            }
+            $menu->raw('<a href="#"><span>' . $route . '</span></a>', $items);
+        }
+        return $menu->breadcrumbs()
+                        ->setElement('ol')
+                        ->addClass('breadcrumb');
+    }
+
 }

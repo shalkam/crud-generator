@@ -11,9 +11,9 @@ Add Service providers to `config/app.php`
 ``` php
 'providers' => [
     // ....
-    'Shalkam\CrudGenerator\CrudGeneratorServiceProvider'
+    'Shalkam\CrudGenerator\CrudGeneratorServiceProvider',
     //For the form-builder package
-    'Kris\LaravelFormBuilder\FormBuilderServiceProvider'
+    'Kris\LaravelFormBuilder\FormBuilderServiceProvider',
     //For column sortable package 
     'Kyslik\ColumnSortable\ColumnSortableServiceProvider',
     //For Menu package

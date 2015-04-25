@@ -12,6 +12,7 @@ class BaseForm extends Form {
         'int' => 'text',
         'double' => 'text',
         'tinytext' => 'text',
+        'decimal' => 'text',
         'text' => 'textarea',
         'timestamp' => 'datetime-local',
         'datetime' => 'datetime-local',
