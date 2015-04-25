@@ -46,7 +46,7 @@
                         Dashboard
                         <small>Control panel</small>
                     </h1>
-                    {!! \Shalkam\CrudGenerator\Facades\CrudMenu::breadcrumbs() !!}
+                    {!! \Shalkam\CrudGenerator\Facades\CrudMenu::init()->breadcrumbs() !!}
                 </section>
                 <!-- Main content -->
                 <section class="content">

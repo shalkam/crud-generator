@@ -21,11 +21,10 @@ Add Service providers to `config/app.php`
 ]
 ```
 
-Add The Menu Facade to `config/app.php`
+Add Facades to `config/app.php`
 ``` php
 'aliases' => [
     //...
-    'Menu' => 'Menu\Menu',
     'FormBuilder' => 'Kris\LaravelFormBuilder\Facades\FormBuilder',
 ]
 ```

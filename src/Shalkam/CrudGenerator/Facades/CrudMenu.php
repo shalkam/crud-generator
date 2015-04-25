@@ -17,7 +17,11 @@ use Menu;
 
 class CrudMenu {
 
-    private static function getMenuItems() {
+    public static function init() {
+        return new CrudMenu();
+    }
+
+    private function getMenuItems() {
         $cfg = app_path() . '/menu.json';
         $data = null;
         if (file_exists($cfg)) {
@@ -27,11 +31,19 @@ class CrudMenu {
         return $data;
     }
 
-    public static function render() {
-        $menu = Menu::handler('main')
+    private function getBreadcrumbsItems() {
+        $data = [];
+        foreach ($this->getMenuItems() as $route => $menuItems) {
+            $data[] = ['name' => $route, 'id' => $route];
+        }
+        return $data;
+    }
+
+    public function render() {
+        $menu = \Menu\Menu::handler('main')
                 ->addClass('sidebar-menu');
-        foreach (self::getMenuItems() as $route => $menuItems) {
-            $items = Menu::items();
+        foreach ($this->getMenuItems() as $route => $menuItems) {
+            $items = \Menu\Menu::items('main');
             foreach ($menuItems as $itemRoute => $itemName) {
                 $items->add($itemRoute, '<i class="fa fa-dashboard"></i> <span>' . $itemName . '</span>');
             }
@@ -44,17 +56,18 @@ class CrudMenu {
         return $menu->render();
     }
 
-    public static function breadcrumbs() {
-        $menu = Menu::handler('main')
-                ->addClass('sidebar-menu');
-        foreach (self::getMenuItems() as $route => $menuItems) {
-            $items = Menu::items();
+    public function breadcrumbs() {
+        $menu = \Menu\Menu::handler('breadcrumbs');
+        foreach ($this->getMenuItems() as $route => $menuItems) {
+            $items = \Menu\Menu::items('breadcrumbs');
             foreach ($menuItems as $itemRoute => $itemName) {
-                $items->add($itemRoute, '<span>' . $itemName . '</span>');
+                $items->add($itemRoute, $itemName);
             }
-            $menu->raw('<a href="#"><span>' . $route . '</span></a>', $items);
+            $menu->add($route, $route, $items);
         }
-        return $menu->breadcrumbs()
+        return $menu->breadcrumbs(function($itemLists) {
+                            return $itemLists[1];
+                        })
                         ->setElement('ol')
                         ->addClass('breadcrumb');
     }

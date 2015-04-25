@@ -22,7 +22,7 @@
             </div>
         </form>
         
-        {!! \Shalkam\CrudGenerator\Facades\CrudMenu::render() !!}
+        {!! \Shalkam\CrudGenerator\Facades\CrudMenu::init()->render() !!}
 
     </section>
     <!-- /.sidebar -->
