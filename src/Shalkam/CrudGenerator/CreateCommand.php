@@ -135,30 +135,18 @@ class CreateCommand extends Command {
                 continue;
             }
 
-            $fieldName = $fieldInputs[0];
-
-            $fieldTypeOptions = explode(",", $fieldInputs[1]);
-            $fieldType = $fieldTypeOptions[0];
-            $fieldTypeParams = [];
-            if (sizeof($fieldTypeOptions) > 1) {
-                for ($i = 1; $i < sizeof($fieldTypeOptions); $i++)
-                    $fieldTypeParams[] = $fieldTypeOptions[$i];
-            }
-
-            $fieldOptions = [];
-            if (sizeof($fieldInputs) > 2)
-                $fieldOptions[] = $fieldInputs[2];
-
+            $formType = $this->ask("Enter Form Field type: ");
+            $formOptions = $this->ask("Enter Form Options: ");
             $validations = $this->ask("Enter validations: ");
             $sortable = false;
             if ($this->confirm('In list View? [yes|no]')) {
                 $sortable = true;
             }
             $field = [
-                'fieldName' => $fieldName,
-                'fieldType' => $fieldType,
-                'fieldTypeParams' => $fieldTypeParams,
-                'fieldOptions' => $fieldOptions,
+                'fieldName' => $fieldInputs[0],
+                'fieldType' => $fieldInputs[1],
+                'formType' => $formType,
+                'formOptions' => $formOptions,
                 'validations' => $validations,
                 'sortable' => $sortable
             ];
